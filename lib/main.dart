@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
       title: 'Photo App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.dark( // Use dark color scheme for a black background
+        colorScheme: ColorScheme.dark(
           background: Colors.black,
         ),
       ),
@@ -24,11 +24,14 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text('Photo Gallery'),
+      ),
       body: PhotoGrid(),
     );
   }
 }
+
 class PhotoGrid extends StatelessWidget {
   final List<String> photoUrls = [
     'https://cdn-icons-png.flaticon.com/512/4893/4893176.png',
@@ -42,62 +45,47 @@ class PhotoGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Photo Gallery'),
-      ),
+     
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: 0, // Adjust the horizontal spacing
-          mainAxisSpacing: 0, // Adjust the vertical spacing
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
         ),
         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-        String photoText;
-
-          if (index == 0) {
-            photoText = 'Paintings!';
-          } else if (index == 1) {
-            photoText = 'Drawings!';
-          } 
-          else if (index == 2) {
-            photoText = 'Music!';
-          } 
-          else if (index == 3) {
-            photoText = 'Photography!';
-          } 
-          else if (index == 4) {
-            photoText = 'Film!';
-          } 
-          else if (index == 5) {
-            photoText = 'Dance!';
-          } 
-          else {
-            photoText = 'Description for Photo $index';
-          }
-
-
           return GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PhotoDetailPage(
-                    
-                    photoText: photoText,
+              if (index == 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaintingsPage(),
                   ),
-                ),
-              );
+                );
+              } 
+              
+              
+              else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyPhotosPage(
+                      photoText: 'Description for Photo $index',
+                    ),
+                  ),
+                );
+              }
             },
             child: Container(
-              width: 120.0, // Set the desired width
-              height: 120.0, // Set the desired height
+              width: 120.0,
+              height: 120.0,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.white, width: 3.0),
               ),
               child: Image.network(
                 photoUrls[index],
-                fit: BoxFit.cover, // Use BoxFit to control the image's scaling behavior
+                fit: BoxFit.cover,
               ),
             ),
           );
@@ -107,10 +95,48 @@ class PhotoGrid extends StatelessWidget {
   }
 }
 
-class PhotoDetailPage extends StatelessWidget {
+class PaintingsPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/250946/535359/main-image',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/247009/530926/main-image',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Saved Paintings'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MyPhotosPage extends StatelessWidget {
   final String photoText;
 
-  PhotoDetailPage({required this.photoText});
+  MyPhotosPage({required this.photoText});
 
   @override
   Widget build(BuildContext context) {
