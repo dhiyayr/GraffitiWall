@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -20,15 +19,47 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class BottomNav extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore),
+          label: 'Explore',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      // Optionally add onTap, currentIndex, etc. here
+      // For example:
+      // currentIndex: _selectedIndex,
+      // onTap: _onItemTapped,
+    );
+  }
+}
+
+
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text('Photo Gallery'),
+      ),
       body: PhotoGrid(),
+      bottomNavigationBar: BottomNav(), // Add bottomNav here
     );
   }
 }
+
+
 class PhotoGrid extends StatelessWidget {
   final List<String> photoUrls = [
     'https://cdn-icons-png.flaticon.com/512/4893/4893176.png',
@@ -41,71 +72,65 @@ class PhotoGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Photo Gallery'),
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2, // Number of columns
+        crossAxisSpacing: 0, // Horizontal space between tiles
+        mainAxisSpacing: 0, // Vertical space between tiles
       ),
-      body: GridView.builder(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 0, // Adjust the horizontal spacing
-          mainAxisSpacing: 0, // Adjust the vertical spacing
-        ),
-        itemCount: photoUrls.length,
-        itemBuilder: (context, index) {
+      itemCount: photoUrls.length,
+      itemBuilder: (context, index) {
         String photoText;
-
-          if (index == 0) {
+        // Define photoText based on the index
+        switch (index) {
+          case 0:
             photoText = 'Paintings!';
-          } else if (index == 1) {
+            break;
+          case 1:
             photoText = 'Drawings!';
-          } 
-          else if (index == 2) {
+            break;
+          case 2:
             photoText = 'Music!';
-          } 
-          else if (index == 3) {
+            break;
+          case 3:
             photoText = 'Photography!';
-          } 
-          else if (index == 4) {
+            break;
+          case 4:
             photoText = 'Film!';
-          } 
-          else if (index == 5) {
+            break;
+          case 5:
             photoText = 'Dance!';
-          } 
-          else {
+            break;
+          default:
             photoText = 'Description for Photo $index';
-          }
+        }
 
-
-          return GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => PhotoDetailPage(
-                    
-                    photoText: photoText,
-                  ),
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PhotoDetailPage(
+                  photoText: photoText,
                 ),
-              );
-            },
-            child: Container(
-              width: 120.0, // Set the desired width
-              height: 120.0, // Set the desired height
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white, width: 3.0),
               ),
-              child: Image.network(
-                photoUrls[index],
-                fit: BoxFit.cover, // Use BoxFit to control the image's scaling behavior
-              ),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
             ),
-          );
-        },
-      ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover, // Image scaling
+            ),
+          ),
+        );
+      },
     );
   }
 }
+
 
 class PhotoDetailPage extends StatelessWidget {
   final String photoText;
