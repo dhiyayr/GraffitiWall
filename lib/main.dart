@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -19,33 +20,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class BottomNav extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.explore),
-          label: 'Explore',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
-      // Optionally add onTap, currentIndex, etc. here
-      // For example:
-      // currentIndex: _selectedIndex,
-      // onTap: _onItemTapped,
-    );
-  }
-}
-
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -53,15 +27,10 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Photo Gallery'),
       ),
-      appBar: AppBar(
-        title: Text('Photo Gallery'),
-      ),
       body: PhotoGrid(),
-      bottomNavigationBar: BottomNav(), // Add bottomNav here
     );
   }
 }
-
 
 class PhotoGrid extends StatelessWidget {
   final List<String> photoUrls = [
@@ -75,61 +44,61 @@ class PhotoGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2, // Number of columns
-        crossAxisSpacing: 0, // Horizontal space between tiles
-        mainAxisSpacing: 0, // Vertical space between tiles
-      ),
-      itemCount: photoUrls.length,
-      itemBuilder: (context, index) {
-        String photoText;
-        // Define photoText based on the index
-        switch (index) {
-          case 0:
-            photoText = 'Paintings!';
-            break;
-          case 1:
-            photoText = 'Drawings!';
-            break;
-          case 2:
-            photoText = 'Music!';
-            break;
-          case 3:
-            photoText = 'Photography!';
-            break;
-          case 4:
-            photoText = 'Film!';
-            break;
-          case 5:
-            photoText = 'Dance!';
-            break;
-          default:
-            photoText = 'Description for Photo $index';
-        }
-
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => PhotoDetailPage(
-                  photoText: photoText,
-                ),
+    return Scaffold(
+     
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              if (index == 0) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PaintingsPage(),
+                  ),
+                );
+              } 
+              //  if (index == 1) {
+              //   Navigator.push(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => PaintingsPage(),
+              //     ),
+              //   );
+              // } 
+              
+              
+              else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyPhotosPage(
+                      photoText: 'Description for Photo $index',
+                    ),
+                  ),
+                );
+              }
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
               ),
-            );
-          },
-          child: Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover, // Image scaling
-            ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
@@ -153,6 +122,8 @@ class MyPhotosPage extends StatelessWidget {
   }
 }
 
+
+
 class PaintingsPage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://collectionapi.metmuseum.org/api/collection/v1/iiif/250946/535359/main-image',
@@ -165,6 +136,46 @@ class PaintingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Saved Paintings'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+
+
+class DancePage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/247009/530926/main-image',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Dance'),
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
