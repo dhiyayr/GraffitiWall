@@ -38,6 +38,10 @@ dependencies:
 
   mapbox_gl: ^0.13.0
 
+  a: ^1.0.0
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
