@@ -135,6 +135,24 @@ class PhotoGrid extends StatelessWidget {
 }
 
 
+class MyPhotosPage extends StatelessWidget {
+  final String photoText;
+
+  MyPhotosPage({required this.photoText});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Photo Detail'),
+      ),
+      body: Center(
+        child: Text(photoText, style: TextStyle(fontSize: 20.0)),
+      ),
+    );
+  }
+}
+
 class PaintingsPage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://collectionapi.metmuseum.org/api/collection/v1/iiif/250946/535359/main-image',
@@ -168,24 +186,6 @@ class PaintingsPage extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-}
-
-class MyPhotosPage extends StatelessWidget {
-  final String photoText;
-
-  MyPhotosPage({required this.photoText});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Photo Detail'),
-      ),
-      body: Center(
-        child: Text(photoText, style: TextStyle(fontSize: 20.0)),
       ),
     );
   }
