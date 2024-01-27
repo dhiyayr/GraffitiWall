@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
       title: 'Photo App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.dark( // Use dark color scheme for a black background
+        colorScheme: ColorScheme.dark(
           background: Colors.black,
         ),
       ),
@@ -50,6 +50,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Photo Gallery'),
+      ),
       appBar: AppBar(
         title: Text('Photo Gallery'),
       ),
@@ -132,10 +135,48 @@ class PhotoGrid extends StatelessWidget {
 }
 
 
-class PhotoDetailPage extends StatelessWidget {
+class PaintingsPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/250946/535359/main-image',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/247009/530926/main-image',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Saved Paintings'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MyPhotosPage extends StatelessWidget {
   final String photoText;
 
-  PhotoDetailPage({required this.photoText});
+  MyPhotosPage({required this.photoText});
 
   @override
   Widget build(BuildContext context) {
