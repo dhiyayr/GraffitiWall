@@ -66,26 +66,49 @@ class PhotoGrid extends StatelessWidget {
                   ),
                 );
               } 
-              //  if (index == 1) {
-              //   Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //       builder: (context) => PaintingsPage(),
-              //     ),
-              //   );
-              // } 
-              
-              
-              else {
+              if (index == 1) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyPhotosPage(
-                      photoText: 'Description for Photo $index',
-                    ),
+                    builder: (context) => WritingPage(),
                   ),
                 );
-              }
+              } 
+              if (index == 2) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MusicPage(),
+                  ),
+                );
+              } 
+              if (index == 3) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PhotographyPage(),
+                  ),
+                );
+              } 
+              if (index == 4) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FilmPage(),
+                  ),
+                );
+              } 
+               if (index == 5) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DancePage(),
+                  ),
+                );
+              } 
+              
+              
+              
             },
             child: Container(
               width: 120.0,
@@ -164,13 +187,160 @@ class PaintingsPage extends StatelessWidget {
   }
 }
 
+class WritingPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/1410226/pexels-photo-1410226.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Writing'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class MusicPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://images.pexels.com/photos/1389429/pexels-photo-1389429.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/534283/pexels-photo-534283.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Music'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class PhotographyPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://images.pexels.com/photos/1264210/pexels-photo-1264210.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/752525/pexels-photo-752525.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Photography'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class FilmPage extends StatelessWidget {
+  final List<String> photoUrls = [
+    'https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Film'),
+      ),
+      body: GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          crossAxisSpacing: 0,
+          mainAxisSpacing: 0,
+        ),
+        itemCount: photoUrls.length,
+        itemBuilder: (context, index) {
+          return Container(
+            width: 120.0,
+            height: 120.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.white, width: 3.0),
+            ),
+            child: Image.network(
+              photoUrls[index],
+              fit: BoxFit.cover,
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
 
 
 class DancePage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image',
-    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/247009/530926/main-image',
+    'https://images.pexels.com/photos/7194017/pexels-photo-7194017.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   ];
 
   @override
