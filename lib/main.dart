@@ -28,6 +28,8 @@ class HomePage extends StatelessWidget {
         title: Text('Photo Gallery'),
       ),
       body: PhotoGrid(),
+      bottomNavigationBar: BottomNav(), // Add bottomNav here
+
     );
   }
 }
@@ -201,3 +203,33 @@ class DancePage extends StatelessWidget {
     );
   }
 }
+
+
+class BottomNav extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BottomNavigationBar(
+      items: const <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'Home',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.explore),
+          label: 'Explore',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
+      // Optionally add onTap, currentIndex, etc. here
+      // For example:
+      // currentIndex: _selectedIndex,
+      // onTap: _onItemTapped,
+    );
+  }
+}
+
+
+
