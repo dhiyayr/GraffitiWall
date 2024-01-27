@@ -64,26 +64,26 @@ class PhotoGrid extends StatelessWidget {
                   ),
                 );
               } 
-               if (index == 5) {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DancePage(),
-                  ),
-                );
-              } 
-              
-              
-              // else {
+              //  if (index == 1) {
               //   Navigator.push(
               //     context,
               //     MaterialPageRoute(
-              //       builder: (context) => MyPhotosPage(
-              //         photoText: 'Description for Photo $index',
-              //       ),
+              //       builder: (context) => PaintingsPage(),
               //     ),
               //   );
-              // }
+              // } 
+              
+              
+              else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyPhotosPage(
+                      photoText: 'Description for Photo $index',
+                    ),
+                  ),
+                );
+              }
             },
             child: Container(
               width: 120.0,
@@ -167,7 +167,7 @@ class PaintingsPage extends StatelessWidget {
 class DancePage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://images.unsplash.com/photo-1537365587684-f490102e1225?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://img.freepik.com/free-photo/young-stylish-modern-ballet-dancer-brown-wall-with-mirror_155003-35712.jpg?w=826&t=st=1706390175~exp=1706390775~hmac=9e49d0fc3958d761cd4376f40aa660e2daabb8b0410c1bab986741e4f4503f4e',
+    'https://collectionapi.metmuseum.org/api/collection/v1/iiif/436947/2170247/main-image',
     'https://collectionapi.metmuseum.org/api/collection/v1/iiif/247009/530926/main-image',
   ];
 
