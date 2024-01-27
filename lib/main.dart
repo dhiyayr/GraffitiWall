@@ -29,7 +29,6 @@ class HomePage extends StatelessWidget {
     );
   }
 }
-
 class PhotoGrid extends StatelessWidget {
   final List<String> photoUrls = [
     'https://cdn-icons-png.flaticon.com/512/4893/4893176.png',
@@ -38,13 +37,11 @@ class PhotoGrid extends StatelessWidget {
     'https://cdn-icons-png.flaticon.com/512/6448/6448414.png',
     'https://cdn-icons-png.flaticon.com/512/2503/2503529.png',
     'https://cdn-icons-png.flaticon.com/512/1357/1357574.png',
-    
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         title: Text('Photo Gallery'),
       ),
@@ -56,12 +53,39 @@ class PhotoGrid extends StatelessWidget {
         ),
         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
+        String photoText;
+
+          if (index == 0) {
+            photoText = 'Paintings!';
+          } else if (index == 1) {
+            photoText = 'Drawings!';
+          } 
+          else if (index == 2) {
+            photoText = 'Music!';
+          } 
+          else if (index == 3) {
+            photoText = 'Photography!';
+          } 
+          else if (index == 4) {
+            photoText = 'Film!';
+          } 
+          else if (index == 5) {
+            photoText = 'Dance!';
+          } 
+          else {
+            photoText = 'Description for Photo $index';
+          }
+
+
           return GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PhotoDetailPage(photoUrl: photoUrls[index]),
+                  builder: (context) => PhotoDetailPage(
+                    
+                    photoText: photoText,
+                  ),
                 ),
               );
             },
@@ -69,7 +93,7 @@ class PhotoGrid extends StatelessWidget {
               width: 120.0, // Set the desired width
               height: 120.0, // Set the desired height
               decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
+                border: Border.all(color: Colors.white, width: 3.0),
               ),
               child: Image.network(
                 photoUrls[index],
@@ -82,10 +106,11 @@ class PhotoGrid extends StatelessWidget {
     );
   }
 }
-class PhotoDetailPage extends StatelessWidget {
-  final String photoUrl;
 
-  PhotoDetailPage({required this.photoUrl});
+class PhotoDetailPage extends StatelessWidget {
+  final String photoText;
+
+  PhotoDetailPage({required this.photoText});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +119,7 @@ class PhotoDetailPage extends StatelessWidget {
         title: Text('Photo Detail'),
       ),
       body: Center(
-        child: Image.network(photoUrl),
+        child: Text(photoText, style: TextStyle(fontSize: 20.0)),
       ),
     );
   }
