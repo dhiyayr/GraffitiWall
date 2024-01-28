@@ -53,12 +53,21 @@ Widget build(BuildContext context) {
       toolbarHeight: 120.0, // Adjust the height of the AppBar
       backgroundColor: Colors.blue, // Set background color of the toolbar
     ),
-    backgroundColor: Colors.black, // Change the background color of the body
+    backgroundColor: Colors.white, // Change the background color of the body
     body: Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+           FractionallySizedBox(
+              widthFactor: 1.0, // Full width
+              heightFactor: 0.3, // Half of the screen height
+              child: Image.asset(
+                'assets/Login_Image.jpg', // Replace with your actual image file name and extension
+                fit: BoxFit.cover,
+              ),
+            ),
+            SizedBox(height: 20),
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
@@ -100,3 +109,5 @@ Widget build(BuildContext context) {
     );
   }
 }
+
+
