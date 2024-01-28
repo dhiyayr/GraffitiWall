@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:graffitiwall/main.dart';
 
 void main() {
-  runApp(LoginApp());
+  runApp(LoginPageView());
 }
-
-class LoginApp extends StatelessWidget {
+/*
+class LoginPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,6 +14,15 @@ class LoginApp extends StatelessWidget {
     );
   }
 }
+*/
+class LoginPageView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return LoginPage(); // Returns LoginPage widget directly
+  }
+}
+
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();

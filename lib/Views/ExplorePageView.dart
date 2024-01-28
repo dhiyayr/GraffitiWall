@@ -6,6 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 // import 'package:latlong2/latlong.dart';
 import 'package:latlong2/latlong.dart' as latlong;
 import 'package:url_launcher/url_launcher.dart';
+import 'package:graffitiwall/main.dart';
 
 
 class ExplorePageView extends StatefulWidget {

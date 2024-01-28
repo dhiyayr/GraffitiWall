@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graffitiwall/main.dart';
 
-
+/*
 class HomePageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,6 +15,15 @@ class HomePageView extends StatelessWidget {
     );
   }
 }
+*/
+
+class HomePageView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return PhotoGrid(); // Returns only the PhotoGrid widget
+  }
+}
+
 
 class PhotoGrid extends StatelessWidget {
   final List<String> photoUrls = [
@@ -419,7 +428,6 @@ class FilmPage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     'https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    'https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   ];
 
   @override
