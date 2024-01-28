@@ -13,6 +13,7 @@ class LoginApp extends StatelessWidget {
     );
   }
 }
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -23,28 +24,46 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passwordController = TextEditingController();
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Welcome!\nCreate an Account',
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true, // Center align the title
-        titleSpacing: 30.0,
-        toolbarHeight: 150.0, 
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'Welcome Back!',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold, // Make it bold
+              fontSize: 35.0, // Increase font size
+            ),
+          ),
+          SizedBox(height: 8), // Add space between titles
+          Text(
+            'Log In', 
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold, // Make it bold
+              fontSize: 30.0, // Increase font size
+            ),
+          ),
+        ],
       ),
-      backgroundColor: Colors.black, // Change the background color to black
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+      centerTitle: true, // Center align the titles
+      toolbarHeight: 120.0, // Adjust the height of the AppBar
+      backgroundColor: Colors.blue, // Set background color of the toolbar
+    ),
+    backgroundColor: Colors.black, // Change the background color of the body
+    body: Padding(
+      padding: EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
                 labelText: 'Username',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyle(color: Colors.white), // Set label text color
               ),
             ),
             SizedBox(height: 20),
@@ -53,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
               obscureText: true,
               decoration: InputDecoration(
                 labelText: 'Password',
-                labelStyle: TextStyle(color: Colors.white),
+                labelStyle: TextStyle(color: Colors.white), // Set label text color
               ),
             ),
             SizedBox(height: 30),
@@ -67,7 +86,13 @@ class _LoginPageState extends State<LoginPage> {
                 print('Username: $username');
                 print('Password: $password');
               },
-              child: Text('Login'),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue, // Set background color of the button
+              ),
+              child: Text(
+                'Login',
+                style: TextStyle(color: Colors.white), // Set text color of the button
+              ),
             ),
           ],
         ),
