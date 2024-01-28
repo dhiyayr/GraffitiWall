@@ -168,21 +168,59 @@ class PaintingsPage extends StatelessWidget {
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
-        itemCount: photoUrls.length,
+         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -205,21 +243,59 @@ class WritingPage extends StatelessWidget {
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
-        itemCount: photoUrls.length,
+         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -242,21 +318,59 @@ class MusicPage extends StatelessWidget {
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
-        itemCount: photoUrls.length,
+         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -279,21 +393,59 @@ class PhotographyPage extends StatelessWidget {
           crossAxisSpacing: 0,
           mainAxisSpacing: 0,
         ),
-        itemCount: photoUrls.length,
+         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -302,6 +454,7 @@ class FilmPage extends StatelessWidget {
   final List<String> photoUrls = [
     'https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
     'https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+    'https://images.pexels.com/photos/1701202/pexels-photo-1701202.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
   ];
 
   @override
@@ -318,19 +471,57 @@ class FilmPage extends StatelessWidget {
         ),
         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
@@ -357,19 +548,57 @@ class DancePage extends StatelessWidget {
         ),
         itemCount: photoUrls.length,
         itemBuilder: (context, index) {
-          return Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.white, width: 3.0),
-            ),
-            child: Image.network(
-              photoUrls[index],
-              fit: BoxFit.cover,
+          return GestureDetector(
+            onTap: () {
+              _showCommentDialog(context, photoUrls[index]);
+            },
+            child: Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3.0),
+              ),
+              child: Image.network(
+                photoUrls[index],
+                fit: BoxFit.cover,
+              ),
             ),
           );
         },
       ),
+    );
+  }
+
+  void _showCommentDialog(BuildContext context, String imageUrl) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Add Comment'),
+          content: TextField(
+            decoration: InputDecoration(
+              hintText: 'Type your comment here...',
+            ),
+            maxLines: 3,
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Add logic to save the comment
+                // You can access the entered comment using the controller of the TextField
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        );
+      },
     );
   }
 }
